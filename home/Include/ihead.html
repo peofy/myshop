@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>首页</title>
+
+		<link href="./Include/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+		<link href="./Include/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
+
+		<link href="./Include/basic/css/demo.css" rel="stylesheet" type="text/css" />
+
+		<link href="./Include/css/hmstyle.css" rel="stylesheet" type="text/css"/>
+		<link href="./Include/css/skin.css" rel="stylesheet" type="text/css" />
+		
+
+		
+
+		<script src="./Include/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="./Include/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+		
+		<!-- @media only screen and (min-width: 1260px).category-content .category-list li {height: 43px;} -->
+	</head>
+
+	<body>
+		<div class="hmtop">
+			<!--顶部导航条 -->
+			<div class="am-container header">
+				<ul class="message-l">
+					<div class="topMessage">
+						<div class="menu-hd">
+							<?php if(empty($_SESSION['home'])){?>
+							<a href="./index.php?c=index&a=login" target="_top" class="h">亲，请登录</a>
+							<a href="./index.php?c=index&a=register" target="_top">免费注册</a>
+							<?php } else{?>
+							<a href="./index.php" target="_top" class="h">欢迎光临本商城</a>
+							<a href="./index.php?c=index&a=logout" target="_top">退出</a>
+							<?php } ?>
+						</div>
+
+					</div>
+
+				</ul>
+				<ul class="message-r">
+					<div class="topMessage home">
+						<div class="menu-hd"><a href="./index.php?c=index&a=index" target="_top" class="h">商城首页</a></div>
+					</div>
+					<div class="topMessage my-shangcheng">
+						<div class="menu-hd MyShangcheng"><a href="./index.php?c=user&a=personal" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
+					</div>
+					<div class="topMessage mini-cart">
+						<div class="menu-hd"><a id="mc-menu-hd" href="./index.php?c=cart&a=index" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h"><?php echo @count($_SESSION['cart']) ?></strong></a></div>
+					</div>
+					<div class="topMessage favorite">
+						<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
+				</ul>
+				</div>
+
+				<!--悬浮搜索框-->
+
+				<div class="nav white">
+					<div class="logo"><img src="./Include/images/logo.png" /></div>
+					<div class="logoBig">
+						<li><img src="./Include/images/logobig.png" /></li>
+					</div>
+
+					<div class="search-bar pr">
+						<a name="index_none_header_sysc" href="#"></a>
+						<form>
+							<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
+							<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
+						</form>
+					</div>
+				</div>
+
+				<div class="clear"></div>
+			</div>
+			<div class="banner">
+                      <!--轮播 -->
+						<div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
+							<ul class="am-slides">
+								<li class="banner1"><a href="introduction.html"><img src="./Include/images/ad1.jpg" /></a></li>
+								<li class="banner2"><a><img src="./Include/images/ad2.jpg" /></a></li>
+								<li class="banner3"><a><img src="./Include/images/ad3.jpg" /></a></li>
+								<li class="banner4"><a><img src="./Include/images/ad4.jpg" /></a></li>
+
+							</ul>
+						</div>
+						<div class="clear"></div>	
+			</div>
+			<div class="shopNav">
+				<div class="slideall">
+					
+					   <div class="long-title"><a href="./index.php?c=index&a=allgoods"><span class="all-goods">全部分类</span></a></div>
+					   <div class="nav-cont">
+							<ul>
+								<li class="index"><a href="./index.php?c=index&a=index">首页</a></li>
+                                <li class="qc"><a href="#">闪购</a></li>
+                                <li class="qc"><a href="#">限时抢</a></li>
+                                <li class="qc"><a href="#">团购</a></li>
+                                <li class="qc last"><a href="#">大包装</a></li>
+							</ul>
+						    <div class="nav-extra">
+						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
+						    </div>
+						</div>					
+		        				
+						<!--侧边导航 -->
+						<div id="nav" class="navfull">
+							<div class="area clearfix">
+								<div class="category-content" id="guide_2">
+									
+									<div class="category">
+										<ul class="category-list" id="js_climit_li">
+										<?php foreach($types as $value){ ?>
+										<!-- 遍历一级分类 -->
+										<!-- 判断pid是否为0，如果为0是一级分类 -->
+										<?php if($value['pid'] == 0){ ?>
+											<li style="height:43px" class="appliance js_toggle relative first">
+												<div class="category-info">
+													<h3 class="category-name b-category-name"><i><img src="./Include/images/cake.png"></i><a href="./index.php?c=index&a=erjilist&typeid=<?php echo $value['id']?>" class="ml-22" title=""><?php echo $value['name'] ?></a></h3>
+													<em>&gt;</em></div>
+												<div class="menu-item menu-in top">
+													<div class="area-in">
+														<div class="area-bg">
+															<div class="menu-srot">
+																<div class="sort-side">
+																	<dl class="dl-sort">
+																		<!-- 遍历二级分类 -->
+																		<?php foreach($pid as $val){?>
+																		<!-- 判断上面遍历的id 等于下面pid 说明这里进来的内容是上面这个id的子类 -->
+																		<?php if($val['pid']==$value['id']){?>
+																		<dd><a title="<?php echo $val['name'] ?>" href="./index.php?c=index&a=erjilist&typeid=<?php
+
+																		 echo $val['id']
+
+
+
+																		 ?>"><span><?php echo $val['name']?></span></a></dd>
+																		<?php }  ?>
+																		<?php } ?>
+																	</dl>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											<b class="arrow"></b>	
+											</li>
+										<?php } ?>
+										<?php } ?>
+										</ul>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+						
+						
+						<!--轮播-->
+						
+						<script type="text/javascript">
+							(function() {
+								$('.am-slider').flexslider();
+							});
+							$(document).ready(function() {
+								$("li").hover(function() {
+									$(".category-content .category-list li.first .menu-in").css("display", "none");
+									$(".category-content .category-list li.first").removeClass("hover");
+									$(this).addClass("hover");
+									$(this).children("div.menu-in").css("display", "block")
+								}, function() {
+									$(this).removeClass("hover")
+									$(this).children("div.menu-in").css("display", "none")
+								});
+							})
+						</script>
+
+
+
+					<!--小导航 -->
+					<div class="am-g am-g-fixed smallnav">
+						<div class="am-u-sm-3">
+							<a href="sort.html"><img src="./Include/images/navsmall.jpg" />
+								<div class="title">商品分类</div>
+							</a>
+						</div>
+						<div class="am-u-sm-3">
+							<a href="#"><img src="./Include/images/huismall.jpg" />
+								<div class="title">大聚惠</div>
+							</a>
+						</div>
+						<div class="am-u-sm-3">
+							<a href="#"><img src="./Include/images/mansmall.jpg" />
+								<div class="title">个人中心</div>
+							</a>
+						</div>
+						<div class="am-u-sm-3">
+							<a href="#"><img src="./Include/images/moneysmall.jpg" />
+								<div class="title">投资理财</div>
+							</a>
+						</div>
+					</div>
+
+					<!--走马灯 -->
+
+					<div class="marqueen">
+						<span class="marqueen-title">商城头条</span>
+						<div class="demo">
+
+							<ul>
+								<li class="title-first"><a target="_blank" href="#">
+									<img src="./Include/images/TJ2.jpg"></img>
+									<span>[特惠]</span>商城爆品1分秒								
+								</a></li>
+								<li class="title-first"><a target="_blank" href="#">
+									<span>[公告]</span>商城与广州市签署战略合作协议
+								     <img src="./Include/images/TJ.jpg"></img>
+								     <p>XXXXXXXXXXXXXXXXXX</p>
+							    </a></li>
+							    
+						<div class="mod-vip">
+							<div class="m-baseinfo">
+								<a href="person/index.html">
+									<img src="./Include/images/getAvatar.do.jpg">
+								</a>
+								<em>
+									Hi,<span class="s-name">小叮当</span>
+									<a href="#"><p>点击更多优惠活动</p></a>									
+								</em>
+							</div>
+							<div class="member-logout">
+								<a class="am-btn-warning btn" href="login.html">登录</a>
+								<a class="am-btn-warning btn" href="register.html">注册</a>
+							</div>
+							<div class="member-login">
+								<a href="#"><strong>0</strong>待收货</a>
+								<a href="#"><strong>0</strong>待发货</a>
+								<a href="#"><strong>0</strong>待付款</a>
+								<a href="#"><strong>0</strong>待评价</a>
+							</div>
+							<div class="clear"></div>	
+						</div>																	    
+							    
+								<li><a target="_blank" href="#"><span>[特惠]</span>洋河年末大促，低至两件五折</a></li>
+								<li><a target="_blank" href="#"><span>[公告]</span>华北、华中部分地区配送延迟</a></li>
+								<li><a target="_blank" href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
+								
+							</ul>
+                        <div class="advTip"><img src="./Include/images/advTip.jpg"/></div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<script type="text/javascript">
+					if ($(window).width() < 640) {
+						function autoScroll(obj) {
+							$(obj).find("ul").animate({
+								marginTop: "-39px"
+							}, 500, function() {
+								$(this).css({
+									marginTop: "0px"
+								}).find("li:first").appendTo(this);
+							})
+						}
+						$(function() {
+							setInterval('autoScroll(".demo")', 3000);
+						})
+					}
+				</script>
+			</div>

@@ -1,0 +1,185 @@
+		<div class="center">
+			<div class="col-main">
+				<div class="main-wrap">
+
+					<div class="user-info">
+						<!--标题 -->
+						<div class="am-cf am-padding">
+							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
+						</div>
+						<hr/>
+
+						<!--头像 -->
+						<form class="am-form am-form-horizontal" method="post" action="./index.php?c=user&a=douserinfo&id=<?php echo $_SESSION['home']['id']?>" enctype = "multipart/form-data">
+							<input type="hidden" name="uid" value="<?php echo $result[uid]?>">
+
+						<div class="user-infoPic">
+							<div class="filePic">
+								<input type="file" name="image" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
+								<img class="am-circle am-img-thumbnail" src="../public/uploads/<?php echo $result['image'] ?>" alt="" width=50 />
+							</div>
+
+							<p class="am-form-help">头像</p>
+
+							<div class="info-m">
+								<div><b>用户名：<i><?php echo $_SESSION['home']['name'] ?></i></b></div>
+								<div class="u-level">
+									<span class="rank r2">
+							             <s class="vip1"></s><a class="classes" href="#">铜牌会员</a>
+						            </span>
+								</div>
+								<div class="u-safety">
+									<a href="safety.html">
+									 账户安全
+									<span class="u-profile"><i class="bc_ee0000" style="width: 60px;" width="0">60分</i></span>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<!--个人信息 -->
+						<div class="info-main">
+							
+
+
+								<div class="am-form-group">
+									<label for="user-name" class="am-form-label">姓名</label>
+									<div class="am-form-content">
+										<input type="text" name="zname" id="user-name2" value="<?php echo $result['zname'] ?>">
+
+									</div>
+								</div>
+
+								<div class="am-form-group">
+									<label class="am-form-label">性别</label>
+									<div class="am-form-content sex">
+										 <input type="radio" name="sex" value="0" <?php echo $result['sex']==0?'checked':'' ?>>女
+									     <input type="radio" name="sex" value="1" <?php echo $result['sex']==1?'checked':'' ?>>男
+									     <input type="radio" name="sex" value="2" <?php echo $result['sex']==2?'checked':'' ?>>保密
+									</div>
+								</div>
+
+								<div class="am-form-group">
+									<label for="user-birth" class="am-form-label">年龄</label>
+									<div class="am-form-content birth">
+										<div class="birth-select">
+											<input type="text" name="age" value="<?php echo $result['age'] ?>" class="text-word">
+										</div>
+									</div>
+							
+								</div>
+								<div class="am-form-group">
+									<label for="user-phone" class="am-form-label">电话</label>
+									<div class="am-form-content">
+										 <input type="text" name="mobile" value="<?php echo $result['mobile'] ?>" class="text-word">
+
+									</div>
+								</div>
+								<div class="am-form-group">
+									<label for="user-email" class="am-form-label">地址</label>
+									<div class="am-form-content">
+        								<input type="text" name="address" value="<?php echo $result['address'] ?>" class="text-word">
+									</div>
+								</div>
+
+
+								<div class="am-form-group">
+									<label for="user-birth" class="am-form-label">婚否</label>
+									<div class="am-form-content birth">
+										<div class="birth-select">
+											<select name="marry" id="level">
+									      	<option value="0" <?php echo $result['marry']== 0?'selected':'' ?>>&nbsp;&nbsp;未婚</option>
+										    <option value="1" <?php echo $result['marry']== 1?'selected':'' ?>>&nbsp;&nbsp;已婚</option>
+										    <option value="2" <?php echo $result['marry']== 2?'selected':'' ?>>&nbsp;&nbsp;离异</option>
+										    <option value="3" <?php echo $result['marry']== 3?'selected':'' ?>>&nbsp;&nbsp;丧偶</option>
+								        </select>
+										</div>
+									</div>
+							
+								</div>
+								<!-- <div class="am-form-group address">
+									<label for="user-address" class="am-form-label">收货地址</label>
+									<div class="am-form-content address">
+										<a href="address.html">
+											<p class="new-mu_l2cw">
+												<span class="province">湖北</span>省
+												<span class="city">武汉</span>市
+												<span class="dist">洪山</span>区
+												<span class="street">雄楚大道666号(中南财经政法大学)</span>
+												<span class="am-icon-angle-right"></span>
+											</p>
+										</a>
+
+									</div>
+								</div> -->
+								<div class="am-form-group safety">
+									<label for="user-safety" class="am-form-label">账号安全</label>
+									<div class="am-form-content safety">
+										<a href="safety.html">
+
+											<span class="am-icon-angle-right"></span>
+
+										</a>
+
+									</div>
+								</div>
+								<div class="info-btn">
+									<!-- <div class="am-btn am-btn-danger">保存修改</div> -->
+									<input class="am-btn am-btn-danger" name="" type="submit" value="保存修改" >
+								</div>
+								
+							</form>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+			<aside class="menu">
+				<ul>
+					<li class="person">
+						<a href="./index.php?c=user&a=personal">个人中心</a>
+					</li>
+					<li class="person">
+						<a href="#">个人资料</a>
+						<ul>
+							<li class="active"> <a href="./index.php?c=user&a=information">个人信息</a></li>
+							<li> <a href="safety.html">安全设置</a></li>
+							<li> <a href="address.html">收货地址</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<a href="#">我的交易</a>
+						<ul>
+							<li><a href="./index.php?c=order&a=order">订单管理</a></li>
+							<li> <a href="change.html">退款售后</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<a href="#">我的资产</a>
+						<ul>
+							<li> <a href="coupon.html">优惠券 </a></li>
+							<li> <a href="bonus.html">红包</a></li>
+							<li> <a href="bill.html">账单明细</a></li>
+						</ul>
+					</li>
+
+					<li class="person">
+						<a href="#">我的小窝</a>
+						<ul>
+							<li> <a href="collection.html">收藏</a></li>
+							<li> <a href="foot.html">足迹</a></li>
+							<li> <a href="comment.html">评价</a></li>
+							<li> <a href="news.html">消息</a></li>
+						</ul>
+					</li>
+
+				</ul>
+
+			</aside>
+		</div>
+
+	</body>
+
+</html>
